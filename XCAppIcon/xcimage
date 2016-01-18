@@ -1,0 +1,133 @@
+
+if [ "$#" -lt 2 ]; then
+	echo "This script requires two parameters:"
+	echo "1.) An image (ideally 1024x1024 or 2048x2048)"
+	echo "2.) An output directory (will be created)"
+	echo "And an optional 3rd parameter" 
+	echo "3.) ~iphone or ~ipad"
+	echo "It will then resize the source image to sizes typically used by XCode"
+	echo "usage: $0 image_name output_dir <image_type>";
+  	exit 1;
+fi
+
+if [ $1 = "--help" ]; then
+    echo "usage: $0 image_name output_dir <image_type>";
+    exit 1;
+fi
+
+IMG_TYPE=""
+if [ "$#" == 3 ]; then
+	IMG_TYPE=$3
+fi
+
+echo Processing icons....
+
+# Name our output dir
+OUTPUT_DIR=$2
+
+# Tell the user what is about to happen
+echo Resizing $1 to Xcode sizes in directory $2
+
+# Create an output directory
+rm -rf $OUTPUT_DIR > /dev/null
+mkdir $OUTPUT_DIR > /dev/null
+
+# Generate images
+# 8
+sips $1 -z 24 24 -o $OUTPUT_DIR/$2_8@3x$3.png > /dev/null
+sips $1 -z 16 16  -o $OUTPUT_DIR/$2_8@2x$3.png > /dev/null
+sips $1 -z 8 8 -o $OUTPUT_DIR/$2_8$3.png > /dev/null
+# 16
+sips $1 -z 48 48 -o $OUTPUT_DIR/$2_16@3x$3.png > /dev/null
+sips $1 -z 32 32 -o $OUTPUT_DIR/$2_16@2x$3.png > /dev/null
+sips $1 -z 16 16 -o $OUTPUT_DIR/$2_16$3.png > /dev/null
+# 29 
+sips $1 -z 87 87 -o $OUTPUT_DIR/$2_29@3x$3.png > /dev/null
+sips $1 -z 58 58 -o $OUTPUT_DIR/$2_29@2x$3.png > /dev/null
+sips $1 -z 29 29 -o $OUTPUT_DIR/$2_29$3.png > /dev/null
+# 32
+sips $1 -z 96 96 -o $OUTPUT_DIR/$2_32@3x$3.png > /dev/null
+sips $1 -z 64 64 -o $OUTPUT_DIR/$2_32@2x$3.png > /dev/null
+sips $1 -z 32 32 -o $OUTPUT_DIR/$2_32$3.png > /dev/null
+# 40
+sips $1 -z 120 120 -o $OUTPUT_DIR/$2_40@3x$3.png > /dev/null
+sips $1 -z 80 80 -o $OUTPUT_DIR/$2_40@2x$3.png > /dev/null
+sips $1 -z 40 40 -o $OUTPUT_DIR/$2_40$3.png > /dev/null
+# 44
+sips $1 -z 132 132 -o $OUTPUT_DIR/$2_44@3x$3.png > /dev/null
+sips $1 -z 88 88 -o $OUTPUT_DIR/$2_44@2x$3.png > /dev/null
+sips $1 -z 44 44 -o $OUTPUT_DIR/$2_44$3.png > /dev/null
+# 50
+sips $1 -z 150 150 -o $OUTPUT_DIR/$2_50@3x$3.png > /dev/null
+sips $1 -z 100 100 -o $OUTPUT_DIR/$2_50@2x$3.png > /dev/null
+sips $1 -z 50 50 -o $OUTPUT_DIR/$2_50$3.png > /dev/null
+# 57
+sips $1 -z 171 171 -o $OUTPUT_DIR/$2_57@3x$3.png > /dev/null
+sips $1 -z 114 114 -o $OUTPUT_DIR/$2_57@2x$3.png > /dev/null
+sips $1 -z 57 57 -o $OUTPUT_DIR/$2_57$3.png > /dev/null
+# 60
+sips $1 -z 180 180 -o $OUTPUT_DIR/$2_60@3x$3.png > /dev/null
+sips $1 -z 120 120 -o $OUTPUT_DIR/$2_60@2x$3.png > /dev/null
+sips $1 -z 60 60 -o $OUTPUT_DIR/$2_60$3.png > /dev/null
+# 70
+sips $1 -z 210 210 -o $OUTPUT_DIR/$2_70@3x$3.png > /dev/null
+sips $1 -z 140 140 -o $OUTPUT_DIR/$2_70@2x$3.png > /dev/null
+sips $1 -z 70 70 -o $OUTPUT_DIR/$2_70$3.png > /dev/null
+# 72
+sips $1 -z 216 216 -o $OUTPUT_DIR/$2_72@3x$3.png > /dev/null
+sips $1 -z 144 144 -o $OUTPUT_DIR/$2_72@2x$3.png > /dev/null
+sips $1 -z 72 72 -o $OUTPUT_DIR/$2_72$3.png > /dev/null
+# 76
+sips $1 -z 228 228 -o $OUTPUT_DIR/$2_76@3x$3.png > /dev/null
+sips $1 -z 152 152 -o $OUTPUT_DIR/$2_76@2x$3.png > /dev/null
+sips $1 -z 76 76 -o $OUTPUT_DIR/$2_76$3.png > /dev/null
+# 83.5
+sips $1 -z 250.5 250.5 -o $OUTPUT_DIR/$2_83.5@3x$3.png > /dev/null
+sips $1 -z 167 167 -o $OUTPUT_DIR/$2_83.5@2x$3.png > /dev/null
+sips $1 -z 83.5 83.5 -o $OUTPUT_DIR/$2_83.5$3.png > /dev/null
+# 96
+sips $1 -z 288 288 -o $OUTPUT_DIR/$2_96@3x$3.png > /dev/null
+sips $1 -z 192 192 -o $OUTPUT_DIR/$2_96@2x$3.png > /dev/null
+sips $1 -z 96 96 -o $OUTPUT_DIR/$2_96$3.png > /dev/null
+# 122
+sips $1 -z 366 366 -o $OUTPUT_DIR/$2_122@3x$3.png > /dev/null
+sips $1 -z 244 244 -o $OUTPUT_DIR/$2_122@2x$3.png > /dev/null
+sips $1 -z 122 122 -o $OUTPUT_DIR/$2_122$3.png > /dev/null
+# 128
+sips $1 -z 384 384 -o $OUTPUT_DIR/$2_128@3x$3.png > /dev/null
+sips $1 -z 256 256 -o $OUTPUT_DIR/$2_128@2x$3.png > /dev/null
+sips $1 -z 128 128 -o $OUTPUT_DIR/$2_128$3.png > /dev/null
+# 148
+sips $1 -z 444 444 -o $OUTPUT_DIR/$2_148@3x$3.png > /dev/null
+sips $1 -z 296 296 -o $OUTPUT_DIR/$2_148@2x$3.png > /dev/null
+sips $1 -z 148 148 -o $OUTPUT_DIR/$2_148$3.png > /dev/null
+# 174
+sips $1 -z 522 522 -o $OUTPUT_DIR/$2_174@3x$3.png > /dev/null
+sips $1 -z 348 348 -o $OUTPUT_DIR/$2_174@2x$3.png > /dev/null
+sips $1 -z 174 174 -o $OUTPUT_DIR/$2_174$3.png > /dev/null
+# 200
+sips $1 -z 600 600 -o $OUTPUT_DIR/$2_200@3x$3.png > /dev/null
+sips $1 -z 400 400 -o $OUTPUT_DIR/$2_200@2x$3.png > /dev/null
+sips $1 -z 200 200 -o $OUTPUT_DIR/$2_200$3.png > /dev/null
+# 256
+sips $1 -z 768 768 -o $OUTPUT_DIR/$2_256@3x$3.png > /dev/null
+sips $1 -z 512 512 -o $OUTPUT_DIR/$2_256@2x$3.png > /dev/null
+sips $1 -z 256 256 -o $OUTPUT_DIR/$2_256$3.png > /dev/null
+# 320
+sips $1 -z 960 960 -o $OUTPUT_DIR/$2_320@3x$3.png > /dev/null
+sips $1 -z 640 640 -o $OUTPUT_DIR/$2_320@2x$3.png > /dev/null
+sips $1 -z 320 320 -o $OUTPUT_DIR/$2_320$3.png > /dev/null
+# 512
+sips $1 -z 1536 1536 -o $OUTPUT_DIR/$2_512@3x$3.png > /dev/null
+sips $1 -z 1024 1024 -o $OUTPUT_DIR/$2_512@2x$3.png > /dev/null
+sips $1 -z 512 512 -o $OUTPUT_DIR/$2_512$3.png > /dev/null
+#1024
+sips $1 -z 1024 1024 -o $OUTPUT_DIR/$2_1024$3.png > /dev/null
+sips $1 -z 1024 1024 -s format jpg -o $OUTPUT_DIR/$2_1024$3.jpg > /dev/null
+
+# Show output to user
+echo Created the following images in $OUTPUT_DIR
+ls -l $OUTPUT_DIR
+
+# open dir in finder
+open $OUTPUT_DIR
