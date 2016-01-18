@@ -6,6 +6,18 @@
 //  Copyright © 2016 Zakk Hoyt. All rights reserved.
 //
 
+//  Get input file
+//  Get output director
+//  Resize images using sips
+//  @2x + @3x
+//  83.5
+//  Create AppIcon.appiconset dir
+//  Create Contents.json file
+//  Write json content to file along with duplicating images
+
+
+
+
 import Cocoa
 
 class ViewController: NSViewController {
@@ -13,18 +25,14 @@ class ViewController: NSViewController {
     var inputURL: NSURL? = nil
     var outputURL: NSURL? = nil
     
-    
-    
     @IBOutlet weak var imagePathLabel: NSTextField!
-    
-    
     @IBOutlet weak var outputPathLabel: NSTextField!
-    
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        progressIndicator.hidden = true
     }
 
     override var representedObject: AnyObject? {
@@ -77,33 +85,54 @@ class ViewController: NSViewController {
             return
         }
     
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 8)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 16)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 29)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 32)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 40)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 44)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 50)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 57)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 60)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 70)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 72)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 76)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 83.5)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 96)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 122)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 128)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 148)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 174)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 200)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 256)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 320)
-        resizeImageUniform(inputURL, outputDirURL: outputURL, size: 512)
-        resizeImageWithSuffix(inputURL, outputDirURL: outputURL, pointSize: CGSizeMake(1024, 1024), suffix: 1)
+        progressIndicator.hidden = false
+        progressIndicator.startAnimation(nil)
+        
+        // Generate images
+        let imageSizes: [CGFloat] = [8, 16, 29, 32, 40, 44, 50, 57, 60, 70, 72, 76, 83.5, 96, 122, 18, 148, 174, 200, 256, 320, 512, 1024]
+        for i in 0..<imageSizes.count {
+            let size = imageSizes[i]
+            resizeImageUniform(inputURL, outputDirURL: outputURL, size: size)
+        }
+        
+        
+        // Generate JSON file
+
+        let appIcon = AppIcon()
+
+        appIcon.images.append(Image(size: 29, idiom: .iPhone, scale: ._2x))
+        appIcon.images.append(Image(size: 29, idiom: .iPhone, scale: ._3x))
+        appIcon.images.append(Image(size: 40, idiom: .iPhone, scale: ._2x))
+        appIcon.images.append(Image(size: 40, idiom: .iPhone, scale: ._3x))
+        appIcon.images.append(Image(size: 60, idiom: .iPhone, scale: ._2x))
+        appIcon.images.append(Image(size: 60, idiom: .iPhone, scale: ._3x))
+        
+        if let json = appIcon.json() {
+            print("json: \n" + String(json))
+        } else {
+            print("No json to print")
+        }
+        
+        
+        
+        
+        
+        
+        progressIndicator.stopAnimation(nil)
+        progressIndicator.hidden = true
+        
+        
     }
     
     func resizeImageUniform(imageURL: NSURL, outputDirURL: NSURL, size: CGFloat) {
-        resizeImage(imageURL, outputDirURL: outputDirURL, pointSize: CGSize(width: size, height: size))
+//        let semaphore = dispatch_semaphore_create(0)
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { () -> Void in
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.resizeImage(imageURL, outputDirURL: outputDirURL, pointSize: CGSize(width: size, height: size))
+//                dispatch_semaphore_signal(semaphore);
+//            })
+//        }
+//        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
     }
     
     func resizeImage(imageURL: NSURL, outputDirURL: NSURL, pointSize: CGSize) {
@@ -115,11 +144,12 @@ class ViewController: NSViewController {
     
     func resizeImageWithSuffix(imageURL: NSURL, outputDirURL: NSURL, pointSize: CGSize, suffix: UInt) {
         
+        
         var outputFile: String = ""
         var args: [String] = []
 
-        let widthName = String(UInt(pointSize.width))
-        let heightName = String(UInt(pointSize.height))
+        let widthName = pointSize.width % 1 == 0 ? "\(UInt(pointSize.width))" : NSString(format: "%.1f", pointSize.width)
+        let heightName = pointSize.height % 1 == 0 ? "\(UInt(pointSize.height))" : NSString(format: "%.1f", pointSize.height)
         
         
         switch suffix {

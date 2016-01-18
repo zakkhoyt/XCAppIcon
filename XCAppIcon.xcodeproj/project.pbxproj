@@ -14,6 +14,10 @@
 		C6CC726D1C4CC7450091DF2C /* XCAppIconTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CC726C1C4CC7450091DF2C /* XCAppIconTests.swift */; };
 		C6CC72781C4CC7450091DF2C /* XCAppIconUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CC72771C4CC7450091DF2C /* XCAppIconUITests.swift */; };
 		C6CC72861C4CC8D70091DF2C /* xcimage in Resources */ = {isa = PBXBuildFile; fileRef = C6CC72851C4CC8D70091DF2C /* xcimage */; };
+		C6CC728B1C4CD9590091DF2C /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = C6CC728A1C4CD9590091DF2C /* Contents.json */; };
+		C6CC728D1C4CD9FA0091DF2C /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CC728C1C4CD9FA0091DF2C /* Image.swift */; };
+		C6CC728F1C4CDACD0091DF2C /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CC728E1C4CDACD0091DF2C /* Info.swift */; };
+		C6CC72911C4CDB430091DF2C /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CC72901C4CDB430091DF2C /* AppIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		C6CC72771C4CC7450091DF2C /* XCAppIconUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCAppIconUITests.swift; sourceTree = "<group>"; };
 		C6CC72791C4CC7450091DF2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6CC72851C4CC8D70091DF2C /* xcimage */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xcimage; sourceTree = "<group>"; };
+		C6CC728A1C4CD9590091DF2C /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		C6CC728C1C4CD9FA0091DF2C /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		C6CC728E1C4CDACD0091DF2C /* Info.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		C6CC72901C4CDB430091DF2C /* AppIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +105,14 @@
 		C6CC72591C4CC7440091DF2C /* XCAppIcon */ = {
 			isa = PBXGroup;
 			children = (
+				C6CC728A1C4CD9590091DF2C /* Contents.json */,
 				C6CC72851C4CC8D70091DF2C /* xcimage */,
 				C6CC725A1C4CC7440091DF2C /* AppDelegate.swift */,
 				C6CC725C1C4CC7440091DF2C /* ViewController.swift */,
 				C6CC725E1C4CC7440091DF2C /* Assets.xcassets */,
 				C6CC72601C4CC7450091DF2C /* Main.storyboard */,
 				C6CC72631C4CC7450091DF2C /* Info.plist */,
+				C6CC72921C4CDD890091DF2C /* Model */,
 			);
 			path = XCAppIcon;
 			sourceTree = "<group>";
@@ -123,6 +133,16 @@
 				C6CC72791C4CC7450091DF2C /* Info.plist */,
 			);
 			path = XCAppIconUITests;
+			sourceTree = "<group>";
+		};
+		C6CC72921C4CDD890091DF2C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C6CC728C1C4CD9FA0091DF2C /* Image.swift */,
+				C6CC728E1C4CDACD0091DF2C /* Info.swift */,
+				C6CC72901C4CDB430091DF2C /* AppIcon.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +252,7 @@
 				C6CC72861C4CC8D70091DF2C /* xcimage in Resources */,
 				C6CC725F1C4CC7440091DF2C /* Assets.xcassets in Resources */,
 				C6CC72621C4CC7450091DF2C /* Main.storyboard in Resources */,
+				C6CC728B1C4CD9590091DF2C /* Contents.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +277,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6CC72911C4CDB430091DF2C /* AppIcon.swift in Sources */,
 				C6CC725D1C4CC7440091DF2C /* ViewController.swift in Sources */,
+				C6CC728F1C4CDACD0091DF2C /* Info.swift in Sources */,
+				C6CC728D1C4CD9FA0091DF2C /* Image.swift in Sources */,
 				C6CC725B1C4CC7440091DF2C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

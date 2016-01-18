@@ -683,6 +683,19 @@
                                     <action selector="testButtonAction:" target="XfG-lQ-9wD" id="um6-Lz-xEn"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dFi-x4-pTd">
+                                <rect key="frame" x="385" y="222" width="81" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="6AE-eS-PXD"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gcf-3Y-LHd">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="imagePathButtonAction:" target="XfG-lQ-9wD" id="WwD-zY-Dzm"/>
+                                </connections>
+                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jck-MN-SLA">
                                 <rect key="frame" x="18" y="231" width="367" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Path" id="R08-Da-g7G">
@@ -712,29 +725,21 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dFi-x4-pTd">
-                                <rect key="frame" x="385" y="222" width="81" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="69" id="6AE-eS-PXD"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gcf-3Y-LHd">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="imagePathButtonAction:" target="XfG-lQ-9wD" id="WwD-zY-Dzm"/>
-                                </connections>
-                            </button>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="7Zs-3q-QNT">
+                                <rect key="frame" x="224" y="61" width="32" height="32"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="dFi-x4-pTd" firstAttribute="leading" secondItem="Jck-MN-SLA" secondAttribute="trailing" constant="8" id="1XW-aj-ZwX"/>
                             <constraint firstAttribute="trailing" secondItem="3Aj-YF-OMP" secondAttribute="trailing" constant="20" id="36P-aM-i81"/>
+                            <constraint firstItem="7Zs-3q-QNT" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="3bp-Vx-98i"/>
                             <constraint firstItem="JkO-pK-dcG" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="3cr-vy-z9o"/>
                             <constraint firstItem="Jck-MN-SLA" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="22" id="68o-ah-6PQ"/>
                             <constraint firstItem="9gp-Qe-GDI" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="Uko-Ci-Ylk"/>
                             <constraint firstItem="9gp-Qe-GDI" firstAttribute="top" secondItem="Jck-MN-SLA" secondAttribute="bottom" constant="10" id="bbB-1l-Iob"/>
                             <constraint firstAttribute="trailing" secondItem="dFi-x4-pTd" secondAttribute="trailing" constant="20" id="bdu-Gz-ugz"/>
                             <constraint firstItem="dFi-x4-pTd" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="l5U-LL-pXK"/>
+                            <constraint firstItem="JkO-pK-dcG" firstAttribute="top" secondItem="7Zs-3q-QNT" secondAttribute="bottom" constant="20" id="nq8-mS-rxe"/>
                             <constraint firstItem="Jck-MN-SLA" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="pRw-9c-dOd"/>
                             <constraint firstAttribute="bottom" secondItem="JkO-pK-dcG" secondAttribute="bottom" constant="20" id="pZQ-l9-zPq"/>
                             <constraint firstItem="3Aj-YF-OMP" firstAttribute="leading" secondItem="9gp-Qe-GDI" secondAttribute="trailing" constant="8" id="rby-D8-hyk"/>
@@ -744,6 +749,7 @@
                     <connections>
                         <outlet property="imagePathLabel" destination="Jck-MN-SLA" id="ed0-AB-gA9"/>
                         <outlet property="outputPathLabel" destination="9gp-Qe-GDI" id="YfD-QE-kkv"/>
+                        <outlet property="progressIndicator" destination="7Zs-3q-QNT" id="WfV-47-DSJ"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
